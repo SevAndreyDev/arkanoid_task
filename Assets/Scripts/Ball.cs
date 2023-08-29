@@ -5,15 +5,20 @@ namespace Arkanoid
 {
     public class Ball : MonoBehaviour
     {
-        [Inject] private GameSettings gameSettings;
-        [Inject] private ScoreController scoreController;
+        [Inject] private EventsManager eventsManager;
+
+        private void Start()
+        {
+            eventsManager.AddListener(GameEvents.WinGame, _ => gameObject.SetActive(false));
+            eventsManager.AddListener(GameEvents.LoseGame, _ => gameObject.SetActive(false));
+        }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.CompareTag("Obstacle"))
             {
                 Destroy(collision.gameObject);
-                scoreController.AddScore(gameSettings.ScoresForObstacle);
+                eventsManager.InvokeEvent(GameEvents.DestroyObstacle);
             }
         }
     }

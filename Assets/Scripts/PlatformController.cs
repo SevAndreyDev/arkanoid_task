@@ -10,10 +10,13 @@ namespace Arkanoid
         [SerializeField] private float movementLimit = 1.68f;
         [SerializeField] private float force = 10f;
         [SerializeField] private Rigidbody2D ball;
+
+        private bool isBallOnPlatform;
                         
         private void Start()
         {
             ball.transform.SetParent(transform);
+            isBallOnPlatform = true;
 
             inputController.OnMove += OnMoveIteration;
             inputController.OnBallThrow += OnBallThrow;
@@ -29,8 +32,13 @@ namespace Arkanoid
 
         private void OnBallThrow()
         {
-            ball.transform.SetParent(null);
-            ball.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+            if (isBallOnPlatform)
+            {
+                ball.transform.SetParent(null);
+                ball.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+
+                isBallOnPlatform = false;
+            }
         }
     }
 }

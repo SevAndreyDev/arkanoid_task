@@ -71,17 +71,6 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""03d93fe5-048e-4e87-995c-ba0c6ffc71cf"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""56d36363-0072-41d6-b16f-3fda4e87cf13"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
