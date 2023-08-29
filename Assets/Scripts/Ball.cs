@@ -20,6 +20,11 @@ namespace Arkanoid
                 Destroy(collision.gameObject);
                 eventsManager.InvokeEvent(GameEvents.DestroyObstacle);
             }
+
+            if (collision.gameObject.CompareTag("Death"))
+            {
+                eventsManager.InvokeEvent(GameEvents.LoseGame);
+            }
         }
     }
 }
